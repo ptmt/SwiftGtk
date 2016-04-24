@@ -13,19 +13,31 @@ public class Calendar: Widget {
 
     public var year: Int {
         get {
-            return getProperty(pointer: UnsafeMutablePointer(widgetPointer), name: "year")
+            if let widget = widgetPointer {
+              return getProperty(pointer: UnsafeMutablePointer(widget), name: "year")
+            } else {
+              return 0
+            }
         }
         set {
-            setProperty(pointer: UnsafeMutablePointer(widgetPointer), name: "year", newValue: newValue)
+            if let widget = widgetPointer {
+              setProperty(pointer: UnsafeMutablePointer(widget), name: "year", newValue: newValue)
+            }
         }
     }
 
     public var showHeading: Bool {
         get {
-            return getProperty(pointer: UnsafeMutablePointer(widgetPointer), name: "show-heading")
+            if let widget = widgetPointer {
+              return getProperty(pointer: UnsafeMutablePointer(widget), name: "show-heading")
+            } else {
+              return false
+            }
         }
         set {
-            setProperty(pointer: UnsafeMutablePointer(widgetPointer), name: "show-heading", newValue: newValue)
+            if let widget = widgetPointer {
+              setProperty(pointer: UnsafeMutablePointer(widget), name: "show-heading", newValue: newValue)
+            }        
         }
     }
 }
